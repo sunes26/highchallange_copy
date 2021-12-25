@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.0/firebase-firestore.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2813641407023123"
+    crossorigin="anonymous"></script>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>문화 영역 모의고사 결과</title>
+    <link rel="stylesheet" href="result.css" />
+    <style>
+      @media screen and (max-width: 400px) {
+        .text {
+          font-size: 1.6em;
+        }
+        .text2 {
+          font-size: 3em;
+        }
+      }
+      @media screen and (min-width: 400px) {
+        .text2 {
+          font-size: 4.3em;
+        }
+      }
+    </style>
+  </head>
+  <body style="margin: 0; padding: 0">
+    <div style="display: flex; justify-content: center; align-items: center">
+      <div
+        class="box"
+        style="width: 100%; max-width: 650px; margin-top: 5vh; min-width: 400px"
+      >
+        <!--헤드-->
+        <div>
+          <h1 class="text" style="min-width: 300px">
+            2021학년도 하이챌린지스쿨시험
+          </h1>
+          <h1 class="text2" style="font-size: 3.5em; margin-top: -10px">
+            주니어 문화 영역
+          </h1>
+        </div>
+
+        <div
+          style="
+            display: flex !important;
+            justify-content: space-evenly;
+            align-self: center;
+
+            flex-direction: column;
+            align-items: center;
+          "
+        >
+          <div
+            class="examInfo"
+            style="
+              width: 100%;
+              display: flex;
+              justify-content: space-around;
+              align-items: center;
+              margin-top: -30px;
+            "
+          >
+            <div style="position: relative; width: 4rem">
+              <h1 style="background-color: #c4c4c4; border-radius: 50em">
+                A형
+              </h1>
+            </div>
+            <div><h1>제 1교시</h1></div>
+            <div><h1>1</h1></div>
+          </div>
+          <!--경계선-->
+
+          <div
+            style="
+              width: 80%;
+              border: 2px solid #737373;
+              display: flex;
+              justify-content: center;
+              background-color: #737373;
+              align-items: center;
+            "
+          ></div>
+          <!--점수-->
+          <div>
+            <h1 style="margin-top: 50px">당신의 점수는?</h1>
+            <div
+              class="point"
+              style="
+                color: #fa851a;
+                font-size: 50px;
+                min-width: 40px;
+                margin-top: -60px;
+              "
+            >
+              <h1 id="point">0점</h1>
+            </div>
+          </div>
+          <!--경계선-->
+
+          <div
+            style="
+              margin-top: -30px;
+              width: 80%;
+              border: 2px solid #737373;
+              display: flex;
+              justify-content: center;
+              background-color: #737373;
+              align-items: center;
+            "
+          ></div>
+
+          <!--문화나이-->
+          <div>
+            <h1 style="margin-top: 50px" id="comment_year">
+              당신의 문화나이는?
+            </h1>
+            <div
+              style="
+                color: #fa851a;
+                font-size: 50px;
+                min-width: 40px;
+                margin-top: -60px;
+              "
+            >
+              <h1 id="human">청년</h1>
+            </div>
+            <div
+              style="
+                color: #fa851a;
+                font-size: 20px;
+                min-width: 40px;
+                margin-top: -60px;
+              "
+            >
+              <h4 id="comment">혹시 ‘꼰대’라는 소리 종종 듣지 않나요?</h4>
+            </div>
+          </div>
+          
+          <!--경계선-->
+
+          <div
+            id="line"
+            style="
+              width: 80%;
+              border: 2px solid #737373;
+              display: flex;
+              justify-content: center;
+              background-color: #737373;
+              align-items: center;
+            "
+          ></div>
+          
+          <div style="margin-top: 15px"><h2>테스트 공유하기</h2></div>
+          <div class="links" style="display: flex;">
+
+            <a id="kakao-link-btn" href="javascript:sendLink()" style="margin-left: -10px;">
+              <img src="https://cdn.banggooso.com/assets/images/icons/btn-share-kakao.png" style="width: 55px; height: 55px; border-radius: 50%;"/>
+              </a>
+              <a href="https://www.instagram.com/" target="_blank" style="margin-left: 10px;">
+                <img src="https://raw.githubusercontent.com/sunes26/highchallange/main/image/instagram.png" style="width: 55px; height: 55px;"/>
+              </a>
+
+          
+
+            <a href="#" onclick="facebook(); return false;" style="margin-left: 10px;">
+              <img src="https://cdn.banggooso.com/assets/images/icons/btn-share-facebook.png" style="width: 55px; height: 55px; border-radius: 50%;">
+            </a>
+
+            <a href="#" onclick="clip(); return false;"  style="margin-left: 10px;">
+              <div class="link">
+                <img
+                  src="https://cdn.banggooso.com/assets/images/icons/btn-share-linkcopy.png"
+                  style="width: 55px; height: 55px;border-radius: 50%;"
+                  
+                />
+              </div>
+            </a>
+          </div>
+          <div class="text_tag" style="font-size: 1.1em;">
+            
+            <h3 style="color: #fa851a; margin-top: 15px;">#젠링 #님과저의연결고리<br>#Gen_Link #문화영역_모의고사</h3>
+            <h3>결과화면을 캡쳐하여 SNS에 해시태그를 붙여</h3>
+            <h3>공유하면 추첨 후 키트를 드려요!</h3>
+          </div>
+          <div>
+            
+           <span style="font-size: 1.5em; font-weight: 800;"> <img src="https://raw.githubusercontent.com/sunes26/highchallange/main/image/Group%2089.png" style="width: 25px; margin-left: -30px;margin-top: -2px; position: absolute; ">키트 판매 수익은 어떻게 할래?</span>
+            <h3>판매 수익의 일부는 재판매를 위한 금액으로 재사용되고,</h3>
+              <h3>일부는 청소년 기관에 기부하여 어려움을 겪고 있는 청소년들에게</h3>
+              <h3>도움을 주기 위해 사용될 예정입니다!</h3>
+           
+          </div>
+          <input type="button" class="buy_btn" value="키트 구매하러 가기" style="color: white; font-size: 1.7em; font-weight: bold;" onclick="window.open('https://forms.gle/A3PQiVNvRXqt6fc58')" />
+         
+          <div style="height: 35px;"></div>
+        </div>
+        </div>
+      </div>
+
+      
+    </div>
+    <div><br /><br /></div>
+
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2813641407023123"
+     crossorigin="anonymous"></script>
+<!-- 광고1 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2813641407023123"
+     data-ad-slot="2905826440"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+    
+    <script src="result.js"></script>
+
+
+
+    <script type='text/javascript'>
+      //<![CDATA[
+        // // 사용할 앱의 JavaScript 키를 설정해 주세요.
+        Kakao.init('b16fca4b80aaf8faff6ef802ae7f889e');
+        // // 카카오링크 버튼을 생성합니다. 처음 한번만 호출하면 됩니다.
+        Kakao.Link.createDefaultButton({
+          container: '#kakao-link-btn',
+          objectType: 'feed',
+          content: {
+            title: '문화 영역 모의고사',
+            description: '#젠링 #시험 #님과저의연결고리 #세대차이',
+            imageUrl: 'https://k.kakaocdn.net/14/dn/btriuZCS2xO/LwU7exBPbU174OAXkr1nj1/o.jpg',
+            link: {
+              mobileWebUrl: 'https://developers.kakao.com',
+              webUrl: 'https://developers.kakao.com'
+            }
+          },
+          social: {
+            likeCount: 286,
+            commentCount: 45,
+            sharedCount: 845
+          },
+          buttons: [
+            {
+              title: '웹으로 보기',
+              link: {
+                mobileWebUrl: 'https://developers.kakao.com',
+                webUrl: 'https://developers.kakao.com'
+              }
+            },
+            {
+              title: '앱으로 보기',
+              link: {
+                mobileWebUrl: 'https://developers.kakao.com',
+                webUrl: 'https://developers.kakao.com'
+              }
+            }
+          ]
+        });
+      //]]>
+    </script>
+
+
+   
+    <script type="text/javascript">
+
+
+      function facebook(){
+        window.open('http://www.facebook.com/sharer.php?u=https://gen-link.ga');
+      }
+
+      function clip(){
+      
+        var url = '';
+        var textarea = document.createElement("textarea");
+        document.body.appendChild(textarea);
+        url = "https://gen-link.ga";
+        textarea.value = url;
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+        alert("URL이 복사되었습니다.")
+      }
+      
+      </script>
+    <!-- <script src="year.js"></script>-->
+  </body>
+</html>
